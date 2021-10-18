@@ -1,0 +1,44 @@
+.service button{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: white;
+}
+
+.service{
+    background-color: rgb(241, 241, 241);
+    border: 0;
+    padding: 20px;
+    margin: 15px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 3px gray;
+    transition: 300ms;
+}
+
+.service:hover{
+    box-shadow: 0px 0px 10px rgb(85, 85, 85);
+    transition: 300ms;
+}
+
+.title-span{
+    background-color: rgba(78, 78, 78, 0.308);
+    height: 30px;
+    width: 300px;
+    margin: auto;
+    position: relative;
+    top: -50px;
+}
+
+@media screen and (max-width:700px) {
+    .service{
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+    }
+
+    .title-span{
+        background-color: rgba(78, 78, 78, 0.308);
+        height: 25px;
+        width: 50%;
+        margin: auto;
+        position: relative;
+        top: -30px;
+    }
+}

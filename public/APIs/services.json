@@ -1,0 +1,58 @@
+[
+  {
+    "id": 101,
+    "title": "Research and innovation",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/mh4qxhj/01.jpg",
+    "button": "/services/101"
+  },
+  {
+    "id": 102,
+    "title": "physiotherapy",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/WfzsmQC/02.jpg",
+    "button": "/services/102"
+  },
+  {
+    "id": 103,
+    "title": "Facial treatment",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/XV1c3ZD/03.jpg",
+    "button": "/services/103"
+  },
+  {
+    "id": 104,
+    "title": "Cosmetic treatment",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/rsXH1kw/04.jpg",
+    "button": "/services/104"
+  },
+  {
+    "id": 105,
+    "title": "Patient receiving massage",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/RY3tfc3/05.jpg",
+    "button": "/services/105"
+  },
+  {
+    "id": 106,
+    "title": "Medicine and surgery",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/RT45pft/06.jpg",
+    "button": "/services/106"
+  },
+  {
+    "id": 107,
+    "title": "Physical therapy",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/LQqbgws/07.jpg",
+    "button": "/services/107"
+  },
+  {
+    "id": 108,
+    "title": "Dental Care",
+    "details": "lorem ipsum",
+    "image": "https://i.ibb.co/fxLpJzQ/08.jpg",
+    "button": "/services/108"
+  }
+]

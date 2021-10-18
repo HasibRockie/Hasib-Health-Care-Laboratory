@@ -1,0 +1,16 @@
+.login-container{
+    margin: auto;
+    width: 40%;
+    border-radius: 10px;
+}
+
+.rounded{
+    border-radius: 8px;
+}
+
+@media screen and (max-width:850px) {
+    .login-container{
+        width:100%;
+        margin: auto;
+    }
+}
