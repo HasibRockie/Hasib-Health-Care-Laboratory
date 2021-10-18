@@ -3,11 +3,11 @@ import { Transition } from "@headlessui/react";
 import logo from "./logo.png";
 import "./Header.css";
 import { Link } from "react-router-dom";
-import FirebaseSettings from "./../../Firebase/Firebase.Settings";
+import useAuth from "../../Context/useAuth";
 
 function Header() {
   const [isOpen, setIsOpen] = useState(true);
-  const { loggedIn, user, email, name, SignOut } = FirebaseSettings();
+  const { loggedIn, user, email, name, SignOut } = useAuth();
   return (
     <div>
       <nav className="bg-gray-800">
@@ -127,55 +127,55 @@ function Header() {
           leaveFrom="opacity-100 scale-100"
           leaveTo="opacity-0 scale-95"
         >
-          {(ref) => (
-            <div className="md:hidden" id="mobile-menu">
-              <div ref={ref} className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                <Link to="/">
-                  <span className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
-                    Home
-                  </span>{" "}
-                </Link>
-                <Link to="/team">
-                  <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    Team
-                  </span>{" "}
-                </Link>
+          <div className="md:hidden" id="mobile-menu">
+            <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+              <Link to="/">
+                <span className="hover:bg-gray-700 text-white block px-3 py-2 rounded-md text-base font-medium">
+                  Home
+                </span>{" "}
+              </Link>
+              <Link to="/team">
+                <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                  Team
+                </span>{" "}
+              </Link>
 
-                <Link to="/services">
-                  <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    Services
-                  </span>{" "}
-                </Link>
+              <Link to="/services">
+                <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                  Services
+                </span>{" "}
+              </Link>
 
-                <Link to="/blogs">
-                  <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    Blogs
-                  </span>{" "}
-                </Link>
+              <Link to="/blogs">
+                <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                  Blogs
+                </span>{" "}
+              </Link>
 
-                {loggedIn ? (
-                  <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    <span className="user">{name || user.displayName || email } </span>
-
-                    <button
-                      onClick={SignOut}
-                      type="submit"
-                      className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                    >
-                      {" "}
-                      Logout{" "}
-                    </button>
+              {loggedIn ? (
+                <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                  <span className="user">
+                    {name || user.displayName || email}{" "}
                   </span>
-                ) : (
-                  <Link to="/signin">
-                    <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                      Register/Login
-                    </span>{" "}
-                  </Link>
-                )}
-              </div>
+
+                  <button
+                    onClick={SignOut}
+                    type="submit"
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    {" "}
+                    Logout{" "}
+                  </button>
+                </span>
+              ) : (
+                <Link to="/signin">
+                  <span className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
+                    Register/Login
+                  </span>{" "}
+                </Link>
+              )}
             </div>
-          )}
+          </div>
         </Transition>
       </nav>
     </div>

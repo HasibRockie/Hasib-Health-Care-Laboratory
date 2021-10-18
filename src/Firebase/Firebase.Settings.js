@@ -22,12 +22,14 @@ const FirebaseSettings = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(true) 
 
   const auth = getAuth();
   const googleProvider = new GoogleAuthProvider();
   const githubProvider = new GithubAuthProvider();
 
   useEffect(() => {
+      setLoading(true)
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setLoggedIn(true);
@@ -36,6 +38,7 @@ const FirebaseSettings = () => {
         setEmail(user?.email);
         setError('')
       }
+      setLoading(false)
     });
 
 
@@ -61,90 +64,33 @@ const GetPassword = (e) => {
 
   // sign up
   const SignUp = (name) => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        setUser(userCredential.user);
-        setName(name);
-        setLoggedIn(true);
-        setEmail(email);
-        history.push('/')
-        setError('')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setError(errorMessage);
-        console.log(errorMessage); 
-      });
+    setLoading(true)
+    return createUserWithEmailAndPassword(auth, email, password)
   };
 
   //   sign in
   const SignIn = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        setUser(userCredential.user);
-        setEmail(userCredential.user?.email);
-        setName(userCredential.user?.displayName);
-        setLoggedIn(true);
-        history.push('/')
-        setError('')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        setError(errorMessage);
-      });
+      setLoading(true)
+    return signInWithEmailAndPassword(auth, email, password)
   };
 
   //   google sign in
   const GoogleSignIn = () => {
-    signInWithPopup(auth, googleProvider)
-      .then((result) => {
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
+      setLoading(true)
+      return signInWithPopup(auth, googleProvider)
 
-        setUser(result.user);
-        setEmail(result.user?.email);
-        setName(result.user?.displayName);
-        setLoggedIn(true);
-        history.push('/')
-        setError('')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GoogleAuthProvider.credentialFromError(error);
-
-        setError(error?.message);
-      });
   };
 
   //   github sign in
   const GithubSignIn = () => {
-    signInWithPopup(auth, githubProvider)
-      .then((result) => {
-        const credential = GithubAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-
-        setUser(result.user);
-        setEmail(result.user?.email);
-        setName(result.user?.displayName);
-        setLoggedIn(true);
-        history.push('/')
-        setError('')
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        const email = error.email;
-        const credential = GithubAuthProvider.credentialFromError(error);
-        setError(errorMessage);
-      });
+      setLoading(true)
+    return signInWithPopup(auth, githubProvider)
+ 
   };
 
   // sign out
   const SignOut = () => {
+    setLoading(true)
     signOut(auth)
       .then(() => {
         setUser({});
@@ -156,7 +102,8 @@ const GetPassword = (e) => {
       })
       .catch((error) => {
         setError(error?.message);
-      });
+      })
+      .finally(setLoading(false))
   };
 
   return {
@@ -173,7 +120,14 @@ const GetPassword = (e) => {
     GithubSignIn,
     GetName,
     GetEmail,
-    GetPassword
+    GetPassword,
+    loading,
+    setLoading,
+    setEmail,
+    setName,
+    setPassword,
+    setError,
+    setLoggedIn
   };
 };
 

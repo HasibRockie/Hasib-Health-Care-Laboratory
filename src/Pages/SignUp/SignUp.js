@@ -2,10 +2,51 @@ import React from "react";
 import "./SignUp.css";
 import { Link } from "react-router-dom";
 import logo from "../../Components/Header/logo.png";
-import FirebaseSettings from "./../../Firebase/Firebase.Settings";
+import useAuth from "../../Context/useAuth";
+import { useHistory } from 'react-router';
+import { useLocation } from 'react-router';
 
 const SignUp = () => {
-  const { GetName, GetEmail, GetPassword, SignUp, name, error } = FirebaseSettings();
+  const {
+    name,
+    email,
+    error,
+    GetName,
+    GetEmail,
+    GetPassword,
+    SignIn,
+    SignUp,
+    GoogleSignIn,
+    GithubSignIn,
+    setUser,
+    setName,
+    setEmail,
+    setError,
+    setLoggedIn,
+    setLoading,
+  } = useAuth();
+  const history = useHistory();
+  const location = useLocation();
+  const redirect_uri = location?.state?.from || "/";
+
+  const handleSignUp = () => {
+    SignUp(name)
+    .then((userCredential) => {
+      history.push(redirect_uri)
+      setUser(userCredential.user);
+      setName(name);
+      setLoggedIn(true);
+      setEmail(email); 
+      setError('')
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      setError(errorMessage);
+      console.log(errorMessage); 
+    })
+    .finally(setLoading(false))
+  }
 
   return (
     <div>
@@ -36,7 +77,7 @@ const SignUp = () => {
               placeholder="Password"
             />
             <button
-            onClick={(name) => SignUp(name)}
+            onClick={handleSignUp}
               type="submit"
               className="w-full text-center py-2 rounded bg-red-600 text-white hover:bg-red-800 focus:outline-none my-1"
             >
@@ -44,7 +85,7 @@ const SignUp = () => {
             </button>
             <br />
             {
-              error? <p className="text-red-800"> ✖ {error}</p> : <p className="text-red-800"> </p>
+              error? <p className="text-red-300"> ✖ {error}</p> : <p className="text-red-800"> </p>
             }
           </div>
           <div className="text-grey-dark mt-6">
