@@ -8,8 +8,6 @@ const {
 } = process.env;
  
 
-console.log(process.env);
-
 const firebaseConfig = {
   apiKey: `${REACT_APP_APIKEY}`,
   authDomain: `${REACT_APP_AUTHDOMAIN}`,

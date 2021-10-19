@@ -2,7 +2,7 @@
 
 ## Project Name
 
-- Hasib Health Care & Laboratory
+- **Hasib Health Care & Laboratory**
 
 ## Features
 
@@ -11,7 +11,11 @@
 - React Router Dom with Private Route
 - Using useContext, useHistory, useLocation etc
 - Tailwind CSS framework is used
-- Additional packages: heroicons, animated-slider
+- Additional packages: 
+    - Heroicons
+    - Font awesome
+    - Animated-slider
+    - React CountUp
 - Confidential keys are protected by environment variable 
 
 ## Live server link

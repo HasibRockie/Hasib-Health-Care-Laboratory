@@ -1,0 +1,81 @@
+.counter {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 20px 0px 60px;
+  background-color: black;
+  color: white;
+  padding: 100px 70px;
+  background-image: url("./counter-bg.png");
+  background-position: center;
+  background-size: cover;
+}
+
+.counter p {
+  background-color: rgb(34, 34, 34);
+  display: inline;
+  font-size: 3.5rem;
+  padding: 20px 20px;
+  margin-top: 50px;
+  border-radius: 10px;
+  font-family: cursive;
+}
+
+.counter h5 {
+  color: white;
+  margin-bottom: 50px;
+  font-size: 2rem;
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+}
+
+@media screen and (max-width: 1100px) {
+  .counter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 20px 0px 60px;
+    background-color: black;
+    color: white;
+    padding: 60px 30px;
+    grid-row-gap: 70px;
+  }
+
+  .counter p {
+    background-color: rgb(34, 34, 34);
+    display: inline;
+    font-size: 3rem;
+    padding: 20px 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-family: cursive;
+  }
+}
+
+
+@media screen and (max-width: 1100px) {
+  .counter {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin: 20px 0px 60px;
+    background-color: black;
+    color: white;
+    padding: 40px 30px;
+    grid-row-gap: 50px;
+  }
+
+  .counter p {
+    background-color: rgb(34, 34, 34);
+    display: inline;
+    font-size: 2rem;
+    padding: 20px 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    font-family: cursive;
+  }
+
+  .counter h5 {
+    color: white;
+    margin-bottom: 30px;
+    font-size: 1rem;
+    font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  }
+  
+}

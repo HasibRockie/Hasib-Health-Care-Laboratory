@@ -41,9 +41,9 @@ function App() {
             <Route path="/team">
               <Team></Team>
             </Route>
-            <Route path="/blogs">
+            <PrivateRoute path="/blogs">
               <Blogs> </Blogs>
-            </Route>
+            </PrivateRoute>
             <Route path="*">
               <NotFound></NotFound>
             </Route>

@@ -1,0 +1,38 @@
+.blogs{
+    display: grid;
+    grid-template-columns: repeat(5,1fr);
+    margin-top: 20px; 
+}
+
+
+.blog{
+    border: 1px solid gray;
+    text-align: left;
+    padding: 5px;
+}
+
+.blog p{
+    color: rgb(112, 112, 112);
+}
+
+.blog span{
+    color: coral;
+    font-weight: 600;
+}
+
+
+@media screen and (max-width:1000px) {
+    .blogs{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+    }
+    
+}
+
+@media screen and (max-width:600px) {
+    .blogs{
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+    }
+    
+}

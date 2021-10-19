@@ -6,12 +6,12 @@ import { Link } from "react-router-dom";
 import useAuth from "../../Context/useAuth";
 
 function Header() {
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const { loggedIn, user, email, name, SignOut } = useAuth();
   return (
     <div>
       <nav className="bg-gray-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-4 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex space-between space-x-40 items-center">
               <div className="flex-shrink-0">
@@ -19,7 +19,7 @@ function Header() {
                   <img className="h-12" src={logo} alt="Workflow" />{" "}
                 </Link>
               </div>
-              <div className="hidden flex  md:block">
+              <div className="hidden flex  md:flex">
                 <div className="ml-10 flex items-baseline space-x-7">
                   <Link to="/">
                     <span className=" hover:bg-gray-700 text-white px-3 py-2 rounded-md text-sm font-medium">
@@ -46,10 +46,10 @@ function Header() {
                   </Link>
 
                   {loggedIn ? (
-                    <div>
+                    <div className="flex space-between">
                       <span className="text-red-300 font-semibold">
                         {user.displayName || name || email}
-                      </span>
+                      </span> &ensp; 
                       <button
                         onClick={SignOut}
                         type="submit"
