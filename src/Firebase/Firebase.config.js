@@ -1,10 +1,22 @@
-const firebaseConfig = {
-    apiKey: "AIzaSyDypi_cLecsDotNrJBtHVCeoqUKiezMNNc",
-    authDomain: "hasib-health-care.firebaseapp.com",
-    projectId: "hasib-health-care",
-    storageBucket: "hasib-health-care.appspot.com",
-    messagingSenderId: "440159016320",
-    appId: "1:440159016320:web:aac012774fde6da5c09d65"
-  };
+const {
+  REACT_APP_APIKEY,
+  REACT_APP_AUTHDOMAIN,
+  REACT_APP_PROJECTID,
+  REACT_APP_STORAGEBUCKET,
+  REACT_APP_MESSAGINGSENDERID,
+  REACT_APP_APPID,
+} = process.env;
+ 
 
-  export default firebaseConfig;
+console.log(process.env);
+
+const firebaseConfig = {
+  apiKey: `${REACT_APP_APIKEY}`,
+  authDomain: `${REACT_APP_AUTHDOMAIN}`,
+  projectId: `${REACT_APP_PROJECTID}`,
+  storageBucket: `${REACT_APP_STORAGEBUCKET}`,
+  messagingSenderId: `${REACT_APP_MESSAGINGSENDERID}`,
+  appId: `${REACT_APP_APPID}`,
+};
+
+export default firebaseConfig;
